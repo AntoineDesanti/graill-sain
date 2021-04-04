@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" android:layout_height="match_parent" android:layout_width="match_parent">
+
+
+
+    <item
+        android:id="@+id/map"
+        android:icon="@drawable/baseline_explore_black_24dp"
+        android:title="Carte"/>
+
+    <item
+        android:id="@+id/news"
+        android:icon="@drawable/baseline_feed_black_24dp"
+        android:title="Actualités"/>
+
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/baseline_search_black_24dp"
+        android:title="Recherche"/>
+
+    <item
+        android:id="@+id/cart"
+        android:icon="@drawable/baseline_shopping_cart_black_24dp"
+        android:title="Panier"/>
+
+    <item
+        android:id="@+id/profil"
+        android:icon="@drawable/baseline_person_black_24dp"
+        android:title="Profil"/>
+
+</menu>
