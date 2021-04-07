@@ -5,8 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.preference.PreferenceManager;
 
 import android.app.NotificationManager;
 import android.os.Bundle;
@@ -21,14 +20,20 @@ import com.graillsain.graillsain.NewsPage.NewsFragment;
 import com.graillsain.graillsain.ProfilPage.ProfilFragment;
 import com.graillsain.graillsain.SearchPage.SearchFragment;
 
+import org.osmdroid.api.IMapController;
+import org.osmdroid.config.Configuration;
+import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
+import org.osmdroid.util.GeoPoint;
+import org.osmdroid.views.MapView;
+
 public class MainActivity extends AppCompatActivity {
 
     private int notificationId = 0;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
         final Fragment mapPageFragment = new MapFragment();
