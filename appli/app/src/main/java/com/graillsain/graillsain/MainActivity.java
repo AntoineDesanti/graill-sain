@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         final Fragment newsPageFragment = new NewsFragment();
 
         BottomNavigationView bottomNav = findViewById(R.id.navigationView);
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, mapPageFragment).commit();
 
         bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
