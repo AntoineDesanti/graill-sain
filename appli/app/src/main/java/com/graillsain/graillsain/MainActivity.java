@@ -1,5 +1,6 @@
 package com.graillsain.graillsain;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -10,8 +11,10 @@ import androidx.fragment.app.FragmentTransaction;
 import android.app.NotificationManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.EditText;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.graillsain.graillsain.CartPage.CartFragment;
 import com.graillsain.graillsain.MapPage.MapFragment;
 import com.graillsain.graillsain.NewsPage.NewsFragment;
@@ -34,30 +37,39 @@ public class MainActivity extends AppCompatActivity {
         final Fragment searchPageFragment = new SearchFragment();
         final Fragment newsPageFragment = new NewsFragment();
 
+        BottomNavigationView bottomNav = findViewById(R.id.navigationView);
 
+        bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
+                switch (item.getItemId()){
 
-        findViewById(R.id.menu_map_button).setOnClickListener(click -> {
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, mapPageFragment).commit();
-           //  return@OnNavigationItemSelectedListener true
+                    case R.id.menu_map_button:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, mapPageFragment).commit();
+                        return true;
+
+                    case R.id.menu_profil_button:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, profilPageFragment).commit();
+                        return true;
+
+                    case R.id.menu_cart_button:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, cartPageFragment).commit();
+                        return true;
+
+                    case R.id.menu_search_button:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, searchPageFragment).commit();
+                        return true;
+
+                    case R.id.menu_news_button:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, newsPageFragment).commit();
+                        return true;
+
+                }
+
+                return false;
+            }
         });
-        findViewById(R.id.menu_profil_button).setOnClickListener(click -> {
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, profilPageFragment).commit();
-        });
-        findViewById(R.id.menu_cart_button).setOnClickListener(click -> {
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, cartPageFragment).commit();
-        });
-
-        findViewById(R.id.menu_search_button).setOnClickListener(click -> {
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, searchPageFragment).commit();
-        });
-        findViewById(R.id.menu_news_button).setOnClickListener(click -> {
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, newsPageFragment).commit();
-        });
-
-
-
-
 
     }
 
