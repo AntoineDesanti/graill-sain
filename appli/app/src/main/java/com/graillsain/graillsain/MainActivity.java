@@ -16,6 +16,7 @@ import android.widget.EditText;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.graillsain.graillsain.CartPage.CartFragment;
 import com.graillsain.graillsain.MapPage.MapFragment;
+import com.graillsain.graillsain.Models.Producer;
 import com.graillsain.graillsain.NewsPage.NewsFragment;
 import com.graillsain.graillsain.ProfilPage.ProfilFragment;
 import com.graillsain.graillsain.SearchPage.SearchFragment;
@@ -26,13 +27,19 @@ import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     private int notificationId = 0;
+    private List<Producer> producers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        producers = Producer.producers;
 
         setContentView(R.layout.activity_main);
 

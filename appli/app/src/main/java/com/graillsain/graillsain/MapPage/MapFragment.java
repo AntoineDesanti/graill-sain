@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
+import com.graillsain.graillsain.Models.Producer;
 import com.graillsain.graillsain.R;
 
 import org.osmdroid.api.IMapController;
@@ -61,10 +62,8 @@ public class MapFragment extends Fragment {
         mapController.setZoom(18.0);
         mapController.setCenter(startPoint);
 
-        ArrayList<OverlayItem> items = new ArrayList<>();
-        OverlayItem chezMichel = new OverlayItem("Chez Michel", "Producteur Vérifié", new GeoPoint(43.57195, 7.11661));
-        Drawable m = chezMichel.getMarker(0);
-        items.add(chezMichel);
+        ArrayList<OverlayItem> items = getProducersOverlay();
+       // Drawable m = chezMichel.getMarker(0)
 
         ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(getContext(), items, new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
             @Override
@@ -80,6 +79,16 @@ public class MapFragment extends Fragment {
 
         mOverlay.setFocusItemsOnTap(true);
         mapView.getOverlays().add(mOverlay);
+    }
+
+    private ArrayList<OverlayItem> getProducersOverlay(){
+        ArrayList<OverlayItem> producersOverlay = new ArrayList<>();
+        Producer.producers.stream().forEach(p -> {
+            GeoPoint location = new GeoPoint(p.getLatitude(),p.getLongitude());
+            producersOverlay.add(new OverlayItem(p.getName(), p.getVerified() ? "Producteur Vérifié" : "Producteur", location));
+        });
+
+        return producersOverlay;
     }
 
     @Override
