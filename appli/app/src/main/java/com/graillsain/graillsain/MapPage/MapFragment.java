@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
+import com.graillsain.graillsain.Models.Location;
 import com.graillsain.graillsain.Models.Producer;
 import com.graillsain.graillsain.R;
 
@@ -28,6 +29,7 @@ import java.util.ArrayList;
 public class MapFragment extends Fragment {
     private MapView mapView;
     private GPSTracker gpsTracker;
+    private GeoPoint userLocation;
 
     @Nullable
     @Override
@@ -42,20 +44,20 @@ public class MapFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         gpsTracker = new GPSTracker(this.getContext());
 
-
         Configuration.getInstance().load(view.getContext(), PreferenceManager.getDefaultSharedPreferences(view.getContext()));
         mapView = view.findViewById(R.id.osm_map);
         mapView.setTileSource(TileSourceFactory.MAPNIK); //render map
         mapView.setBuiltInZoomControls(false); //map zoomable
-        GeoPoint startPoint = null;
+
         if(gpsTracker.canGetLocation()){
-           Double latitude =  gpsTracker.getLatitude(); // returns latitude
-           Double longitude = gpsTracker.getLongitude();
-           startPoint = new GeoPoint(latitude,longitude);
+            Double latitude =  gpsTracker.getLatitude(); // returns latitude
+            Double longitude = gpsTracker.getLongitude();
+            userLocation = new GeoPoint(latitude, longitude);
         }
-        else{
-            startPoint = new GeoPoint(43.57197, 7.11657);
-        }
+        GeoPoint startPoint;
+
+        if(userLocation != null) startPoint = userLocation;
+        else startPoint = new GeoPoint(43.57197, 7.11657);
 
         IMapController mapController;
         mapController = mapView.getController();
@@ -63,6 +65,11 @@ public class MapFragment extends Fragment {
         mapController.setCenter(startPoint);
 
         ArrayList<OverlayItem> items = getProducersOverlay();
+        OverlayItem userLocationOverlay = new OverlayItem("Vous", "",userLocation);
+        Drawable currentLocationMarker = getResources().getDrawable(R.drawable.baseline_location_on_black_24dp, getContext().getTheme());
+        userLocationOverlay.setMarker(currentLocationMarker);
+
+        items.add(userLocationOverlay);
        // Drawable m = chezMichel.getMarker(0)
 
         ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(getContext(), items, new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
@@ -79,6 +86,10 @@ public class MapFragment extends Fragment {
 
         mOverlay.setFocusItemsOnTap(true);
         mapView.getOverlays().add(mOverlay);
+
+        view.findViewById(R.id.center_map_button).setOnClickListener(click -> {
+            mapController.setCenter(startPoint);
+        });
     }
 
     private ArrayList<OverlayItem> getProducersOverlay(){
