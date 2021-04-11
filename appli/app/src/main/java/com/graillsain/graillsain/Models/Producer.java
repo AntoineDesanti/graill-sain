@@ -23,8 +23,14 @@ public class Producer {
             new Producer("Chez Michèle", 43.57195, 7.11661, true),
             new Producer("La Ferme de Jean", 43.57479, 7.11970, false),
             new Producer("Brasseur de bières Mathias", 43.73972040324239, 7.289801144604989, true),
-            new Producer("Brin de paille", 43.74382040324239, 7.292801144604989, false)
-    );
+            new Producer("Brin de paille", 43.74382040324239, 7.292801144604989, false),
+            new Producer("Le Panier du Fermier", 43.136960735060036, 5.796301971237862, true),
+            new Producer("Aux Bonnes herbes", 43.1374607, 5.79990197, false)
+
+
+
+            );
+
 
 
     public String getName() {
