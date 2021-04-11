@@ -21,7 +21,10 @@ public class Producer {
     //dummy data
     public static List<Producer> producers = Arrays.asList(
             new Producer("Chez Michèle", 43.57195, 7.11661, true),
-            new Producer("La Ferme de Jean", 43.57479, 7.11970, false));
+            new Producer("La Ferme de Jean", 43.57479, 7.11970, false),
+            new Producer("Brasseur de bières Mathias", 43.73972040324239, 7.289801144604989, true),
+            new Producer("Brin de paille", 43.74382040324239, 7.292801144604989, false)
+    );
 
 
     public String getName() {

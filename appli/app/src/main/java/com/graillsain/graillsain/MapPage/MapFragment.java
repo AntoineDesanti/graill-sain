@@ -47,7 +47,7 @@ public class MapFragment extends Fragment {
         Configuration.getInstance().load(view.getContext(), PreferenceManager.getDefaultSharedPreferences(view.getContext()));
         mapView = view.findViewById(R.id.osm_map);
         mapView.setTileSource(TileSourceFactory.MAPNIK); //render map
-        mapView.setBuiltInZoomControls(false); //map zoomable
+        mapView.setBuiltInZoomControls(true); //map zoomable
 
         if(gpsTracker.canGetLocation()){
             Double latitude =  gpsTracker.getLatitude(); // returns latitude
@@ -96,8 +96,12 @@ public class MapFragment extends Fragment {
         ArrayList<OverlayItem> producersOverlay = new ArrayList<>();
         Producer.producers.stream().forEach(p -> {
             GeoPoint location = new GeoPoint(p.getLatitude(),p.getLongitude());
-            producersOverlay.add(new OverlayItem(p.getName(), p.getVerified() ? "Producteur Vérifié" : "Producteur", location));
+            OverlayItem overlayItem = new OverlayItem(p.getName(), p.getVerified() ? "Producteur Vérifié" : "Producteur", location);
+           // Drawable ProducerMarker = getResources().getDrawable(R.drawable.baseline_shopping_basket_teal_400_24dp, getContext().getTheme());
+            //overlayItem.setMarker(ProducerMarker);
+            producersOverlay.add(overlayItem);
         });
+
 
         return producersOverlay;
     }
