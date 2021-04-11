@@ -22,7 +22,25 @@
       android:translationZ="2dp"
       android:visibility="visible"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent" />
+      app:layout_constraintEnd_toEndOf="parent"
+      android:background="?attr/selectableItemBackgroundBorderless"/>
+
+  <ImageButton
+      android:id="@+id/add_producer_button"
+      android:layout_width="72dp"
+      android:layout_height="61dp"
+      android:background="?attr/selectableItemBackgroundBorderless"
+      android:backgroundTint="#FFFFFF"
+      android:backgroundTintMode="add"
+      android:hapticFeedbackEnabled="true"
+      android:scaleType="fitCenter"
+      android:src="@drawable/baseline_add_circle_black_36dp"
+      android:tint="#000000"
+      android:translationZ="2dp"
+      android:visibility="visible"
+      app:layout_constraintBottom_toBottomOf="@+id/osm_map"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent" />
 
   <org.osmdroid.views.MapView
       android:id="@+id/osm_map"
