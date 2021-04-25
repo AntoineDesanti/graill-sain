@@ -2,12 +2,16 @@ package com.graillsain.graillsain;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
+import android.Manifest;
 import android.app.NotificationManager;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -48,6 +52,14 @@ public class MainActivity extends AppCompatActivity {
         final Fragment cartPageFragment = new CartFragment();
         final Fragment searchPageFragment = new SearchFragment();
         final Fragment newsPageFragment = new NewsFragment();
+
+        if(ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{
+                            Manifest.permission.CAMERA
+                    },
+                    100);
+        }
+
 
         BottomNavigationView bottomNav = findViewById(R.id.navigationView);
         getSupportFragmentManager().beginTransaction().replace(R.id.container, mapPageFragment).commit();

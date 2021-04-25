@@ -25,10 +25,9 @@ public class Producer {
             new Producer("Brasseur de bières Mathias", 43.73972040324239, 7.289801144604989, true),
             new Producer("Brin de paille", 43.74382040324239, 7.292801144604989, false),
             new Producer("Le Panier du Fermier", 43.136960735060036, 5.796301971237862, true),
-            new Producer("Aux Bonnes herbes", 43.1374607, 5.79990197, false)
-
-
-
+            new Producer("Aux Bonnes herbes", 43.1374607, 5.79990197, false),
+            new Producer("La Fraiserie de Marco", 43.620800516589914, 7.092233040502278, true),
+            new Producer("Fruits & Légumes", 43.62170516589914, 7.093133040502278, true)
             );
 
 
