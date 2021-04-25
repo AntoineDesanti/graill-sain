@@ -1,17 +1,28 @@
+
 package com.graillsain.graillsain.MapPage;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.media.ExifInterface;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
-import com.graillsain.graillsain.Models.Location;
+import com.graillsain.graillsain.MainActivity;
 import com.graillsain.graillsain.Models.Producer;
 import com.graillsain.graillsain.R;
 
@@ -30,6 +41,7 @@ public class MapFragment extends Fragment {
     private MapView mapView;
     private GPSTracker gpsTracker;
     private GeoPoint userLocation;
+    private Bitmap capturedImage;
 
     @Nullable
     @Override
@@ -43,6 +55,14 @@ public class MapFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         gpsTracker = new GPSTracker(this.getContext());
+
+        ImageButton addProducerButton =  view.findViewById(R.id.add_producer_button);
+        addProducerButton.setOnClickListener(click ->{
+
+            Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            startActivityForResult(cameraIntent, 100);
+
+        });
 
         Configuration.getInstance().load(view.getContext(), PreferenceManager.getDefaultSharedPreferences(view.getContext()));
         mapView = view.findViewById(R.id.osm_map);
@@ -70,7 +90,7 @@ public class MapFragment extends Fragment {
         userLocationOverlay.setMarker(currentLocationMarker);
 
         items.add(userLocationOverlay);
-       // Drawable m = chezMichel.getMarker(0)
+        // Drawable m = chezMichel.getMarker(0)
 
         ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(getContext(), items, new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
             @Override
@@ -97,7 +117,7 @@ public class MapFragment extends Fragment {
         Producer.producers.stream().forEach(p -> {
             GeoPoint location = new GeoPoint(p.getLatitude(),p.getLongitude());
             OverlayItem overlayItem = new OverlayItem(p.getName(), p.getVerified() ? "Producteur Vérifié" : "Producteur", location);
-           // Drawable ProducerMarker = getResources().getDrawable(R.drawable.baseline_shopping_basket_teal_400_24dp, getContext().getTheme());
+            // Drawable ProducerMarker = getResources().getDrawable(R.drawable.baseline_shopping_basket_teal_400_24dp, getContext().getTheme());
             //overlayItem.setMarker(ProducerMarker);
             producersOverlay.add(overlayItem);
         });
@@ -116,5 +136,19 @@ public class MapFragment extends Fragment {
     public void onResume() {
         super.onResume();
         mapView.onResume();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == 100){
+            this.capturedImage = (Bitmap) data.getExtras().get("data");
+
+
+            CameraFragment nextFrag = new CameraFragment(this.capturedImage);
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(((ViewGroup)getView().getParent()).getId(), nextFrag, "findThisFragment")
+                    .addToBackStack(null)
+                    .commit();
+        }
     }
 }
