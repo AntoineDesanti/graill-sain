@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.media.ExifInterface;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
@@ -89,7 +90,7 @@ public class MapFragment extends Fragment {
         userLocationOverlay.setMarker(currentLocationMarker);
 
         items.add(userLocationOverlay);
-       // Drawable m = chezMichel.getMarker(0)
+        // Drawable m = chezMichel.getMarker(0)
 
         ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(getContext(), items, new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
             @Override
@@ -116,7 +117,7 @@ public class MapFragment extends Fragment {
         Producer.producers.stream().forEach(p -> {
             GeoPoint location = new GeoPoint(p.getLatitude(),p.getLongitude());
             OverlayItem overlayItem = new OverlayItem(p.getName(), p.getVerified() ? "Producteur Vérifié" : "Producteur", location);
-           // Drawable ProducerMarker = getResources().getDrawable(R.drawable.baseline_shopping_basket_teal_400_24dp, getContext().getTheme());
+            // Drawable ProducerMarker = getResources().getDrawable(R.drawable.baseline_shopping_basket_teal_400_24dp, getContext().getTheme());
             //overlayItem.setMarker(ProducerMarker);
             producersOverlay.add(overlayItem);
         });
