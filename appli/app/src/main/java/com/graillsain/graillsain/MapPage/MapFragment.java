@@ -11,7 +11,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
-import com.graillsain.graillsain.Models.Location;
 import com.graillsain.graillsain.Models.Producer;
 import com.graillsain.graillsain.R;
 
