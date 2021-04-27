@@ -1,28 +1,21 @@
 
 package com.graillsain.graillsain.MapPage;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
-import android.media.ExifInterface;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
-import com.graillsain.graillsain.MainActivity;
 import com.graillsain.graillsain.Models.Producer;
 import com.graillsain.graillsain.R;
 
@@ -144,7 +137,7 @@ public class MapFragment extends Fragment {
             this.capturedImage = (Bitmap) data.getExtras().get("data");
 
 
-            CameraFragment nextFrag = new CameraFragment(this.capturedImage);
+            ShareProducerFragment nextFrag = new ShareProducerFragment(this.capturedImage);
             getActivity().getSupportFragmentManager().beginTransaction()
                     .replace(((ViewGroup)getView().getParent()).getId(), nextFrag, "findThisFragment")
                     .addToBackStack(null)
