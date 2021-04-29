@@ -39,6 +39,9 @@ public class ProfilFragment extends Fragment {
 
         ArrayList<Product> products = new ArrayList<Product>();
         products.add(new Product("citron", 2));
+        products.add(new Product("fraise", 4));
+        products.add(new Product("orange", 1));
+        products.add(new Product("framboise", 8));
 
         ProductAdapter productAdapter = new ProductAdapter( getContext(), products);
 
