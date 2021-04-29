@@ -44,7 +44,6 @@ public class ProductAdapter extends BaseAdapter {
 
     public View getView(int position, View convertView, ViewGroup parent){
         ConstraintLayout layoutItem = (convertView == null ? (ConstraintLayout) mInflater.inflate(R.layout.product_layout, parent, false) : (ConstraintLayout) convertView);
-        //= (ConstraintLayout) (convertView == null ? mInflater.inflate(R.layout.page_profil, parent, false) : null); //TODO vérifier que c'est bien null ce qu'il faut mettre en 2e option
 
         ImageView productPicture = layoutItem.findViewById(R.id.photo_produit);
         TextView tvName = layoutItem.findViewById(R.id.nom_produit);
