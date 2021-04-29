@@ -42,7 +42,7 @@ public class ProfilFragment extends Fragment {
 
         ProductAdapter productAdapter = new ProductAdapter( getContext(), products);
 
-        listView.setAdapter((ListAdapter) productAdapter);
+        listView.setAdapter(productAdapter);
         return rootView;
     }
 }
