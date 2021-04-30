@@ -16,6 +16,13 @@ public class Order {
         this.heurePassage = heurePassage;
     }
 
+    public double countTotal(){
+        double somme = 0;
+        for (int i = 0; i<products.size(); i++)
+            somme += products.get(i).getPricePerKilo();
+        return somme;
+    }
+
     public int getId() {
         return id;
     }

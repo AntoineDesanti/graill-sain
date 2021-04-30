@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,7 +17,7 @@ import com.graillsain.graillsain.R;
 
 import java.util.ArrayList;
 
-public class OrderAdapter {
+public class OrderAdapter extends BaseAdapter {
 
     private Order order;
     private LayoutInflater mInflater;
@@ -26,21 +27,19 @@ public class OrderAdapter {
         this.mInflater = LayoutInflater.from(context);
     }
 
-    /*
     public int getCount(){
-        return order.length();
+        return 0;
     }
 
 
     public Object getItem(int position){
-        return listProducts.get(position);
+        return order;
     }
 
     public long getItemId(int position){
-        return position;
+        return 0;
     }
 
-     */
 
     public View getView(int position, View convertView, ViewGroup parent){
         ConstraintLayout layoutItem = (convertView == null ? (ConstraintLayout) mInflater.inflate(R.layout.order_consumer, parent, false) : (ConstraintLayout) convertView);
