@@ -35,7 +35,7 @@ public class ProfilFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.page_profil, container, false);
 
-        ListView listView = rootView.findViewById(R.id.list_view);
+        ListView listView = rootView.findViewById(R.id.list_commande_consumer);
 
         ArrayList<Product> products = new ArrayList<Product>();
         products.add(new Product("citron", 2));
