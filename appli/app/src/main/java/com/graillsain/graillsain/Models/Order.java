@@ -1,15 +1,18 @@
 package com.graillsain.graillsain.Models;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 public class Order {
     private int id;
     private ArrayList<Product> products;
     private int total;
-    private Date heurePassage;
+    private DateFormat heurePassage = DateFormat.getTimeInstance(DateFormat.SHORT, Locale.FRANCE);
 
-    public Order(int id, ArrayList<Product> products, int total, Date heurePassage) {
+    public Order(int id, ArrayList<Product> products, int total, DateFormat heurePassage) {
         this.id = id;
         this.products = products;
         this.total = total;
@@ -47,11 +50,11 @@ public class Order {
         this.total = total;
     }
 
-    public Date getHeurePassage() {
+    public DateFormat getHeurePassage() {
         return heurePassage;
     }
 
-    public void setHeurePassage(Date heurePassage) {
+    public void setHeurePassage(SimpleDateFormat heurePassage) {
         this.heurePassage = heurePassage;
     }
 }
