@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -50,9 +51,17 @@ public class ProfilFragment extends Fragment {
         orders.add(new Order(2, products, 10, null));
         orders.add(new Order(3, products, 15, null));
 
-        OrderAdapter orderAdapter = new OrderAdapter(getContext(), firstOrder);
+        OrderAdapter orderAdapter = new OrderAdapter(getContext(), orders);
 
         listView.setAdapter(orderAdapter);
+
+        TextView tvNomProfile = rootView.findViewById(R.id.nom_consumer);
+        TextView tvStats = rootView.findViewById(R.id.info_consumer);
+        TextView tvPresentation = rootView.findViewById(R.id.nom_commerce);
+
+        tvNomProfile.setText("Bienvenue, " + "prémon");//TODO: inclure le profil de la personne pour pouvoir gérer dynamiquement la page profil
+
+
         return rootView;
     }
 }
