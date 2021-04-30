@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.graillsain.graillsain.Models.Order;
 import com.graillsain.graillsain.Models.Product;
 import com.graillsain.graillsain.R;
 
@@ -43,9 +44,15 @@ public class ProfilFragment extends Fragment {
         products.add(new Product("orange", 1));
         products.add(new Product("framboise", 8));
 
-        ProductAdapter productAdapter = new ProductAdapter( getContext(), products);
+        ArrayList<Order> orders = new ArrayList<Order>();
+        Order firstOrder = new Order(1, products, 5, null);
+        orders.add(firstOrder); //pour pouvoir passer un order dans le OrderAdapter
+        orders.add(new Order(2, products, 10, null));
+        orders.add(new Order(3, products, 15, null));
 
-        listView.setAdapter(productAdapter);
+        OrderAdapter orderAdapter = new OrderAdapter(getContext(), firstOrder);
+
+        listView.setAdapter(orderAdapter);
         return rootView;
     }
 }
