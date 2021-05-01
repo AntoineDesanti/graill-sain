@@ -42,10 +42,10 @@ public class ProfilFragment extends Fragment {
         ListView listView = rootView.findViewById(R.id.list_commande_consumer);
 
         ArrayList<Product> products = new ArrayList<Product>();
-        products.add(new Product("citron", 2));
-        products.add(new Product("fraise", 4));
-        products.add(new Product("orange", 1));
-        products.add(new Product("framboise", 8));
+        products.add(new Product("Citron", 2));
+        products.add(new Product("Fraise", 4));
+        products.add(new Product("Orange", 1));
+        products.add(new Product("Framboise", 8));
 
         ArrayList<Order> orders = new ArrayList<Order>();
         Date date = new Date();

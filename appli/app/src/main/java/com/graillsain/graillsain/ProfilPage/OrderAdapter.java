@@ -56,8 +56,10 @@ public class OrderAdapter extends BaseAdapter {
                 + ":" + orders.get(position).getHeurePassage().getMinutes()
                 + "\n Total : " + orders.get(position).getTotal() + "0€"); //pour le moment réglé sur l'heure actuelle
 
-
-        tvOrder.setText("Panier #" + orders.get(position).getId());
+        String debutProduits = "";
+        for (int i=0; i<3; i++)
+            debutProduits += orders.get(position).getProducts().get(i).getName() + ", "; // pour l'affichage des produits dans la listview
+        tvOrder.setText("Panier #" + orders.get(position).getId() + "\n" + debutProduits);
 
         return layoutItem;
     }
