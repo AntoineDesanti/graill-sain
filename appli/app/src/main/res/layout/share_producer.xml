@@ -38,9 +38,6 @@
         android:layout_marginEnd="24dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        android:textColorLink="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -62,6 +59,8 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="24dp"
+        android:backgroundTint="#E8E8E8"
+        android:background="#EFEFEF"
         android:clickable="false"
         android:ems="10"
         android:inputType="none"
@@ -110,19 +109,30 @@
         android:layout_width="117dp"
         android:layout_height="185dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:text="On y trouve :"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="117dp"
+        android:layout_height="185dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="10dp"
+        android:text="C'est actuellement :"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
     <Button
-        android:id="@+id/button"
+        android:id="@+id/submit_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="8dp"
         android:backgroundTint="@android:color/black"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
@@ -131,14 +141,15 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
     <CheckBox
         android:id="@+id/checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:text="Fruits"
         app:layout_constraintStart_toEndOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
@@ -186,5 +197,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:rippleColor="#000000" />
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:gravity="clip_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox4">
+
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Ouvert" />
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="114dp"
+            android:layout_height="wrap_content"
+            android:text="Fermé" />
+
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
