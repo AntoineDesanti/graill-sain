@@ -1,6 +1,5 @@
 package com.graillsain.graillsain.MapPage;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,26 +9,22 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.camera.core.Camera;
-import androidx.camera.core.Preview;
-import androidx.camera.lifecycle.ProcessCameraProvider;
-import androidx.camera.view.PreviewView;
 import androidx.fragment.app.Fragment;
 import com.graillsain.graillsain.R;
 
 
-public class CameraFragment extends Fragment {
+public class ShareProducerFragment extends Fragment {
 
     private Bitmap producerPicture;
 
-    public CameraFragment(Bitmap producerPicture) {
+    public ShareProducerFragment(Bitmap producerPicture) {
         this.producerPicture = producerPicture;
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.camera, container, false);
+        View rootView = inflater.inflate(R.layout.share_producer, container, false);
 
         ImageView capturedImage = rootView.findViewById(R.id.capturedImage);
         capturedImage.setImageBitmap(producerPicture);
