@@ -11,14 +11,14 @@
     <TextView
         android:id="@+id/heure_passage"
         android:layout_width="196dp"
-        android:layout_height="30dp"
+        android:layout_height="50dp"
         tools:ignore="MissingConstraints"
         android:text="Passer à 15h"/>
 
     <TextView
         android:id="@+id/order"
         android:layout_width="214dp"
-        android:layout_height="30dp"
+        android:layout_height="50dp"
         app:layout_constraintStart_toEndOf="@+id/heure_passage"
         tools:ignore="MissingConstraints"
         android:text="Order number :"/>
