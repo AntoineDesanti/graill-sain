@@ -12,6 +12,7 @@ public class Order {
     private ArrayList<Product> products;
     private double total = 0;
     private Date heurePassage = Calendar.getInstance().getTime();
+    private Consummer consummer;
 
     public Order(){
 
