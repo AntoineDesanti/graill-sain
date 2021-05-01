@@ -6,7 +6,9 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -17,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
 import com.graillsain.graillsain.Models.Producer;
+import com.graillsain.graillsain.Producer.ProducerPageFragment;
 import com.graillsain.graillsain.R;
 
 import org.osmdroid.api.IMapController;
@@ -77,23 +80,29 @@ public class MapFragment extends Fragment {
         mapController.setZoom(18.0);
         mapController.setCenter(startPoint);
 
-        ArrayList<OverlayItem> items = getProducersOverlay();
-        OverlayItem userLocationOverlay = new OverlayItem("Vous", "",userLocation);
+        ArrayList<ProducerOverlayItem> items = getProducersOverlay();
+        ProducerOverlayItem userLocationOverlay = new ProducerOverlayItem("Vous", "", userLocation);
         Drawable currentLocationMarker = getResources().getDrawable(R.drawable.baseline_location_on_black_24dp, getContext().getTheme());
         userLocationOverlay.setMarker(currentLocationMarker);
 
         items.add(userLocationOverlay);
         // Drawable m = chezMichel.getMarker(0)
 
-        ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(getContext(), items, new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
+        ItemizedOverlayWithFocus<ProducerOverlayItem> mOverlay = new ItemizedOverlayWithFocus<>(getContext(), items, new ItemizedIconOverlay.OnItemGestureListener<ProducerOverlayItem>() {
             @Override
-            public boolean onItemSingleTapUp(int index, OverlayItem item) {
+            public boolean onItemSingleTapUp(int index, ProducerOverlayItem item) {
+                ProducerPageFragment producerPageFragment = new ProducerPageFragment(item.getProducer());
+
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.globalActivityView, producerPageFragment, "findThisFragment")
+                        .addToBackStack(null)
+                        .commit();
                 return true;
             }
 
             @Override
-            public boolean onItemLongPress(int index, OverlayItem item) {
-                return false;
+            public boolean onItemLongPress(int index, ProducerOverlayItem item) {
+                return true;
             }
         });
 
@@ -105,16 +114,15 @@ public class MapFragment extends Fragment {
         });
     }
 
-    private ArrayList<OverlayItem> getProducersOverlay(){
-        ArrayList<OverlayItem> producersOverlay = new ArrayList<>();
+    private ArrayList<ProducerOverlayItem> getProducersOverlay(){
+        ArrayList<ProducerOverlayItem> producersOverlay = new ArrayList<>();
         Producer.producers.stream().forEach(p -> {
             GeoPoint location = new GeoPoint(p.getLatitude(),p.getLongitude());
-            OverlayItem overlayItem = new OverlayItem(p.getName(), p.getVerified() ? "Producteur Vérifié" : "Producteur", location);
+            ProducerOverlayItem overlayItem = new ProducerOverlayItem(p.getName(), p.getVerified() ? "Producteur Vérifié" : "Producteur", location,p);
             // Drawable ProducerMarker = getResources().getDrawable(R.drawable.baseline_shopping_basket_teal_400_24dp, getContext().getTheme());
             //overlayItem.setMarker(ProducerMarker);
             producersOverlay.add(overlayItem);
         });
-
 
         return producersOverlay;
     }
