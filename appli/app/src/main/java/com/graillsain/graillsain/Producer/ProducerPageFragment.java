@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -51,7 +52,8 @@ public class ProducerPageFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.producer_page, container, false);
 
-
+        ((TextView) rootView.findViewById(R.id.nom_commerce)).setText(this.producer.getName());
+        ((TextView) rootView.findViewById(R.id.adresse_commerce)).setText(this.producer.getAddress());
 
         return rootView;
 
