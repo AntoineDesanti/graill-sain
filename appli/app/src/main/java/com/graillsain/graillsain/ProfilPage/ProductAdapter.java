@@ -49,9 +49,6 @@ public class ProductAdapter extends BaseAdapter {
         TextView tvName = layoutItem.findViewById(R.id.nom_produit);
         TextView tvPrice = layoutItem.findViewById(R.id.prix_produit);
 
-        Log.d("Matthieu", "listProducts: " + listProducts);
-        Log.d("Matthieu", "product: " + listProducts.get(position));
-        Log.d("Matthieu", "tvName: " + tvName);
         tvName.setText(listProducts.get(position).getName());
         tvPrice.setText(Float.toString((float) listProducts.get(position).getPricePerKilo()) + "0 €");
         //productPicture.setImageResource(listProducts.get(position).getPicture()); //TODO quand on ajoutera l'attribu photo à la classe Product
