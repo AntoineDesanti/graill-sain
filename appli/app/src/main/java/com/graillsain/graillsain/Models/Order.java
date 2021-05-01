@@ -18,11 +18,12 @@ public class Order {
 
     }
 
-    public Order(int id, ArrayList<Product> products, int total, Date heurePassage) {
+    public Order(int id, ArrayList<Product> products, int total, Date heurePassage, Consummer conso) {
         this.id = id;
         this.products = products;
         this.total = total;
         this.heurePassage = heurePassage;
+        this.consummer = conso;
     }
 
     public double countTotal(){
@@ -65,5 +66,17 @@ public class Order {
 
     public void setHeurePassage(Date heurePassage) {
         this.heurePassage = heurePassage;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    public Consummer getConsummer() {
+        return consummer;
+    }
+
+    public void setConsummer(Consummer consummer) {
+        this.consummer = consummer;
     }
 }
