@@ -94,7 +94,7 @@ public class MapFragment extends Fragment {
                 ProducerPageFragment producerPageFragment = new ProducerPageFragment(item.getProducer());
 
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.globalActivityView, producerPageFragment, "findThisFragment")
+                        .replace(R.id.page_map, producerPageFragment, "findThisFragment")
                         .addToBackStack(null)
                         .commit();
                 return true;
@@ -147,7 +147,7 @@ public class MapFragment extends Fragment {
 
             ShareProducerFragment nextFrag = new ShareProducerFragment(this.capturedImage);
             getActivity().getSupportFragmentManager().beginTransaction()
-                    .replace(((ViewGroup)getView().getParent()).getId(), nextFrag, "findThisFragment")
+                    .replace(R.id.globalActivityView, nextFrag, "findThisFragment")
                     .addToBackStack(null)
                     .commit();
         }

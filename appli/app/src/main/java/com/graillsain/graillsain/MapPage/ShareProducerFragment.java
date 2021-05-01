@@ -2,9 +2,11 @@ package com.graillsain.graillsain.MapPage;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -25,6 +27,11 @@ public class ShareProducerFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.share_producer, container, false);
+
+        Button backButton = rootView.findViewById(R.id.back_button);
+        backButton.setOnClickListener( click -> {
+            getActivity().onBackPressed();
+        });
 
         ImageView capturedImage = rootView.findViewById(R.id.capturedImage);
         capturedImage.setImageBitmap(producerPicture);
