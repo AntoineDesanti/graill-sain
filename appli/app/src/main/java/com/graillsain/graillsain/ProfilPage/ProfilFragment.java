@@ -17,7 +17,9 @@ import com.graillsain.graillsain.Models.Order;
 import com.graillsain.graillsain.Models.Product;
 import com.graillsain.graillsain.R;
 
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ProfilFragment extends Fragment {
 
@@ -46,10 +48,11 @@ public class ProfilFragment extends Fragment {
         products.add(new Product("framboise", 8));
 
         ArrayList<Order> orders = new ArrayList<Order>();
-        Order firstOrder = new Order(1, products, 5, null);
+        Date date = new Date();
+        Order firstOrder = new Order(1, products, 5, date);
         orders.add(firstOrder); //pour pouvoir passer un order dans le OrderAdapter
-        orders.add(new Order(2, products, 10, null));
-        orders.add(new Order(3, products, 15, null));
+        orders.add(new Order(2, products, 10, date));
+        orders.add(new Order(3, products, 15, date));
 
         OrderAdapter orderAdapter = new OrderAdapter(getContext(), orders);
 

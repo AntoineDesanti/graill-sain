@@ -43,6 +43,7 @@ public class OrderAdapter extends BaseAdapter {
     }
 
 
+    @SuppressLint("SetTextI18n")
     public View getView(int position, View convertView, ViewGroup parent){
         ConstraintLayout layoutItem = (convertView == null ? (ConstraintLayout) mInflater.inflate(R.layout.order_consumer, parent, false) : (ConstraintLayout) convertView);
 
@@ -50,7 +51,12 @@ public class OrderAdapter extends BaseAdapter {
         TextView tvOrder = layoutItem.findViewById(R.id.order);
 
         //Log.d(new SimpleDateFormat()); //TODO: voir comment faire pour afficher la date correctemùent dans la ligne juste en-dessous
-        tvHeurePassage.setText(orders.get(position).getHeurePassage() + "");
+
+        tvHeurePassage.setText("Heure de passage : " + orders.get(position).getHeurePassage().getHours()
+                + ":" + orders.get(position).getHeurePassage().getMinutes()
+                + "\n Total : " + orders.get(position).getTotal() + "0€"); //pour le moment réglé sur l'heure actuelle
+
+
         tvOrder.setText("Panier #" + orders.get(position).getId());
 
         return layoutItem;
