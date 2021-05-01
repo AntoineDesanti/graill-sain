@@ -3,16 +3,21 @@ package com.graillsain.graillsain.Models;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
 public class Order {
     private int id;
     private ArrayList<Product> products;
-    private int total;
-    private DateFormat heurePassage = DateFormat.getTimeInstance(DateFormat.SHORT, Locale.FRANCE);
+    private double total = 0;
+    private Date heurePassage = Calendar.getInstance().getTime();
 
-    public Order(int id, ArrayList<Product> products, int total, DateFormat heurePassage) {
+    public Order(){
+
+    }
+
+    public Order(int id, ArrayList<Product> products, int total, Date heurePassage) {
         this.id = id;
         this.products = products;
         this.total = total;
@@ -42,7 +47,10 @@ public class Order {
         this.products = products;
     }
 
-    public int getTotal() {
+    public double getTotal() {
+        for ( Product p : products ) {
+            total += p.getPricePerKilo();
+        }
         return total;
     }
 
@@ -50,11 +58,11 @@ public class Order {
         this.total = total;
     }
 
-    public DateFormat getHeurePassage() {
+    public Date getHeurePassage() {
         return heurePassage;
     }
 
-    public void setHeurePassage(SimpleDateFormat heurePassage) {
+    public void setHeurePassage(Date heurePassage) {
         this.heurePassage = heurePassage;
     }
 }
