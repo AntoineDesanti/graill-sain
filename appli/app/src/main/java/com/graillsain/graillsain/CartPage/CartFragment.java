@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,6 +21,7 @@ import com.graillsain.graillsain.R;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import static com.graillsain.graillsain.Models.Consummer.Martin;
 
@@ -46,6 +49,11 @@ public class CartFragment extends Fragment {
         CartAdapter cartAdapter = new CartAdapter(getContext(), Storage.cartElements);
 
         listView.setAdapter(cartAdapter);
+
+        Spinner sp = rootView.findViewById(R.id.availableSlots);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), R.layout.support_simple_spinner_dropdown_item, Storage.availableSlotsForTakingOrder);
+        adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        sp.setAdapter(adapter);
         return rootView;
     }
 
