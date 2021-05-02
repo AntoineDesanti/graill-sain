@@ -1,5 +1,6 @@
 # Projet Graill'Sain
 
+IHM S6
 Notre projet a pour vocation d'aider les producteurs et les consommateurs à proposer et trouver des produits frais pas loin de chez soi.
 
 ## Contributeurs
