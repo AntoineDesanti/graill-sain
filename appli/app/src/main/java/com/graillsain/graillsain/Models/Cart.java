@@ -24,11 +24,11 @@ public class Cart {
     }
 
     public void initializeCartProducts(){
-        productsInCart.add(new CartElement(new Product("Oranges Bio", 1.64), 0.300));
-        productsInCart.add(new CartElement(new Product("Aubergines", 1.34), 0.400));
-        productsInCart.add(new CartElement(new Product("Pommes fermières", 2.01), 0.500));
-        productsInCart.add(new CartElement(new Product("Bananes", 1.49), 0.300));
-        productsInCart.add(new CartElement(new Product("Epinards", 1.24), 0.200));
+        productsInCart.add(new CartElement(new Product("Oranges Bio", 1.64), 0.300, 1));
+        productsInCart.add(new CartElement(new Product("Aubergines", 1.34), 0.400, 1));
+        productsInCart.add(new CartElement(new Product("Pommes fermières", 2.01), 0.500, 1));
+        productsInCart.add(new CartElement(new Product("Bananes", 1.49), 0.300, 1));
+        productsInCart.add(new CartElement(new Product("Epinards", 1.24), 0.200, 1));
     }
 
 

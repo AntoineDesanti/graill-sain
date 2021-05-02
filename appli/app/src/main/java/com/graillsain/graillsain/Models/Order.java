@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class Order {
     private int id;
-    private ArrayList<Product> products;
+    private ArrayList<CartElement> products;
     private double total = 0;
     private Date schedule = Calendar.getInstance().getTime();
     private Consummer consummer;
@@ -15,18 +15,20 @@ public class Order {
 
     }
 
-    public Order(int id, ArrayList<Product> products, int total, Date schedule, Consummer conso) {
+    public Order(int id, ArrayList<CartElement> products, Date schedule, Consummer conso) {
         this.id = id;
         this.products = products;
-        this.total = total;
         this.schedule = schedule;
         this.consummer = conso;
+        this.total = countTotal();
     }
 
     public double countTotal(){
         double somme = 0;
         for (int i = 0; i<products.size(); i++)
-            somme += products.get(i).getPricePerKilo();
+            somme += products.get(i).getProduct().getPricePerKilo()
+                    * products.get(i).getWeight()
+                    * products.get(i).getQuantity();
         return somme;
     }
 
@@ -38,17 +40,17 @@ public class Order {
         this.id = id;
     }
 
-    public ArrayList<Product> getProducts() {
+    public ArrayList<CartElement> getProducts() {
         return products;
     }
 
-    public void setProducts(ArrayList<Product> products) {
+    public void setProducts(ArrayList<CartElement> products) {
         this.products = products;
     }
 
     public double getTotal() {
-        for ( Product p : products ) {
-            total += p.getPricePerKilo();
+        for ( CartElement p : products ) {
+            total += p.getProduct().getPricePerKilo();
         }
         return total;
     }

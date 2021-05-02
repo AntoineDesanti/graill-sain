@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import com.graillsain.graillsain.Models.Fruit;
 import com.graillsain.graillsain.Models.Order;
 import com.graillsain.graillsain.Models.Product;
+import com.graillsain.graillsain.Models.Storage;
 import com.graillsain.graillsain.Models.Vegetable;
 import com.graillsain.graillsain.R;
 
@@ -26,9 +27,10 @@ import java.util.Date;
 import static com.graillsain.graillsain.Models.Consummer.Martin;
 import static java.lang.String.valueOf;
 
+
 public class ProfilFragment extends Fragment {
 
-    private ArrayList<Product> products;
+
 
     public ProfilFragment(){
     }
@@ -46,20 +48,14 @@ public class ProfilFragment extends Fragment {
 
         ListView listView = rootView.findViewById(R.id.list_commande_consumer);
 
-        //liste de produits
-        ArrayList<Product> products = new ArrayList<Product>();
-        products.add(new Fruit("Citron", 2));
-        products.add(new Fruit("Fraise", 4));
-        products.add(new Fruit("Orange", 1));
-        products.add(new Fruit("Framboise", 8));
 
         //liste de commandes
         ArrayList<Order> orders = new ArrayList<Order>();
         Date date = new Date();
-        Order firstOrder = new Order(1, products, 5, date, Martin);
+        Order firstOrder = new Order(1, Storage.cartElements, date, Martin);
         orders.add(firstOrder); //pour pouvoir passer un order dans le OrderAdapter
-        orders.add(new Order(2, products, 10, date, Martin));
-        orders.add(new Order(3, products, 15, date, Martin));
+        orders.add(new Order(2, Storage.cartElements, date, Martin));
+        orders.add(new Order(3, Storage.cartElements, date, Martin));
 
         OrderAdapter orderAdapter = new OrderAdapter(getContext(), orders);
 
