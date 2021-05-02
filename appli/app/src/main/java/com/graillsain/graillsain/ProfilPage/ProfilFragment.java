@@ -102,7 +102,7 @@ public class ProfilFragment extends Fragment {
             OrderDetails orderDetailsFragment = new OrderDetails(orders.get(position));
 
             getActivity().getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.page_order_details, orderDetailsFragment, "findThisFragment")
+                    .replace(R.id.page_profil, orderDetailsFragment, "findThisFragment")
                     .addToBackStack(null)
                     .commit();
         });
