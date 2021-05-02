@@ -65,13 +65,13 @@ public class ProfilFragment extends Fragment {
 
         listView.setAdapter(orderAdapter);
 
-        TextView tvNomProfile = rootView.findViewById(R.id.nom_consumer);
+        TextView tvNameProfile = rootView.findViewById(R.id.nom_consumer);
         TextView tvStats = rootView.findViewById(R.id.info_consumer);
         TextView tvPresentation = rootView.findViewById(R.id.nom_commerce);
 
-        tvNomProfile.setText("Bienvenue, " + orders.get(1).getConsummer().getName());
-
-
+        tvNameProfile.setText("Bienvenue, " + orders.get(1).getConsummer().getName());
+        
+        /*
         int vegetables = 0, fruits = 0;
         int sizeTotal = 0;
 
@@ -87,10 +87,12 @@ public class ProfilFragment extends Fragment {
 
         double percentageFruits = fruits/sizeTotal;
         double percentageVegetables = vegetables/sizeTotal;
+        String toPrintStats = "Pourcentage de légumes : " + valueOf(percentageVegetables)
+                + "\nPourcentage de fruits : " + valueOf(percentageFruits);
 
-        tvStats.setText("Pourcentage de légumes : " + valueOf(percentageVegetables)
-                + "\nPourcentage de fruits : " + valueOf(percentageFruits)); //TODO: stats ne fonctionnent pas à revoir
+         */
 
+        tvStats.setText("Stats : In progress ..."); //TODO: stats ne fonctionnent pas à revoir
 
         return rootView;
     }

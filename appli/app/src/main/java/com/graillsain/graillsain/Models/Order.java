@@ -1,28 +1,25 @@
 package com.graillsain.graillsain.Models;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
 public class Order {
     private int id;
     private ArrayList<Product> products;
     private double total = 0;
-    private Date heurePassage = Calendar.getInstance().getTime();
+    private Date schedule = Calendar.getInstance().getTime();
     private Consummer consummer;
 
     public Order(){
 
     }
 
-    public Order(int id, ArrayList<Product> products, int total, Date heurePassage, Consummer conso) {
+    public Order(int id, ArrayList<Product> products, int total, Date schedule, Consummer conso) {
         this.id = id;
         this.products = products;
         this.total = total;
-        this.heurePassage = heurePassage;
+        this.schedule = schedule;
         this.consummer = conso;
     }
 
@@ -60,12 +57,12 @@ public class Order {
         this.total = total;
     }
 
-    public Date getHeurePassage() {
-        return heurePassage;
+    public Date getSchedule() {
+        return schedule;
     }
 
-    public void setHeurePassage(Date heurePassage) {
-        this.heurePassage = heurePassage;
+    public void setSchedule(Date schedule) {
+        this.schedule = schedule;
     }
 
     public void setTotal(double total) {
