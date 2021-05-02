@@ -5,17 +5,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
+
+import com.graillsain.graillsain.Models.CartElement;
 import com.graillsain.graillsain.Models.Product;
+import com.graillsain.graillsain.Models.Storage;
+import com.graillsain.graillsain.R;
 
 import java.util.ArrayList;
 
 public class CartAdapter extends BaseAdapter {
 
-    private ArrayList<Product> products;
+    private ArrayList<CartElement> products;
     private LayoutInflater mInflater;
 
-    public CartAdapter(Context context, ArrayList<Product> products){
+    public CartAdapter(Context context, ArrayList<CartElement> products){
         this.mInflater = LayoutInflater.from(context);
         this.products = products;
     }
@@ -37,6 +43,17 @@ public class CartAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        return null;
+        ConstraintLayout layoutItem = (convertView == null ? (ConstraintLayout) mInflater.inflate(R.layout.cart_consumer, parent, false) : (ConstraintLayout) convertView);
+        TextView tvCartElement = layoutItem.findViewById(R.id.cart_element_text);
+
+            tvCartElement.setText((int)products.get(position).getQuantity()
+                    + "x "
+                    + products.get(position).getProduct().getName()
+                    + "\t\t"
+                    + products.get(position).getWeight()*products.get(position).getProduct().getPricePerKilo()
+                    + "€"
+            );
+
+        return layoutItem;
     }
 }

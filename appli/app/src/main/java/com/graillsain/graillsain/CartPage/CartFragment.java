@@ -26,6 +26,15 @@ public class CartFragment extends Fragment {
 
     ListView productsListView;
 
+    public CartFragment(){
+
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
 
     @Nullable
     @Override
@@ -34,24 +43,9 @@ public class CartFragment extends Fragment {
 
         ListView listView = rootView.findViewById(R.id.list_cart_consumer);
 
-        //liste de produits
-        ArrayList<Product> products = new ArrayList<Product>();
-        products.add(new Fruit("Citron", 2));
-        products.add(new Fruit("Fraise", 4));
-        products.add(new Fruit("Orange", 1));
-        products.add(new Fruit("Framboise", 8));
+        CartAdapter cartAdapter = new CartAdapter(getContext(), Storage.cartElements);
 
-        //liste de commandes
-        ArrayList<Order> orders = new ArrayList<Order>();
-        Date date = new Date();
-        Order firstOrder = new Order(1, Storage.cartElements, date, Martin);
-        orders.add(firstOrder); //pour pouvoir passer un order dans le OrderAdapter
-        orders.add(new Order(2, Storage.cartElements, date, Martin));
-        orders.add(new Order(3, Storage.cartElements, date, Martin));
-
-        OrderAdapter orderAdapter = new OrderAdapter(getContext(), orders);
-
-        listView.setAdapter(orderAdapter);
+        listView.setAdapter(cartAdapter);
         return rootView;
     }
 
