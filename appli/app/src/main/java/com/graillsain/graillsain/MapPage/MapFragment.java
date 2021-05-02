@@ -61,6 +61,7 @@ public class MapFragment extends Fragment {
         });
 
         Configuration.getInstance().load(view.getContext(), PreferenceManager.getDefaultSharedPreferences(view.getContext()));
+
         mapView = view.findViewById(R.id.osm_map);
         mapView.setTileSource(TileSourceFactory.MAPNIK); //render map
         mapView.setBuiltInZoomControls(true); //map zoomable
@@ -94,7 +95,7 @@ public class MapFragment extends Fragment {
                 ProducerPageFragment producerPageFragment = new ProducerPageFragment(item.getProducer());
 
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.globalActivityView, producerPageFragment, "findThisFragment")
+                        .replace(R.id.page_map, producerPageFragment, "findThisFragment")
                         .addToBackStack(null)
                         .commit();
                 return true;
@@ -117,6 +118,7 @@ public class MapFragment extends Fragment {
     private ArrayList<ProducerOverlayItem> getProducersOverlay(){
         ArrayList<ProducerOverlayItem> producersOverlay = new ArrayList<>();
         Producer.producers.stream().forEach(p -> {
+            System.out.println(p);
             GeoPoint location = new GeoPoint(p.getLatitude(),p.getLongitude());
             ProducerOverlayItem overlayItem = new ProducerOverlayItem(p.getName(), p.getVerified() ? "Producteur Vérifié" : "Producteur", location,p);
             // Drawable ProducerMarker = getResources().getDrawable(R.drawable.baseline_shopping_basket_teal_400_24dp, getContext().getTheme());
@@ -131,12 +133,49 @@ public class MapFragment extends Fragment {
     public void onPause() {
         super.onPause();
         mapView.onPause();
+        mapView.getOverlays().clear();
     }
 
     @Override
     public void onResume() {
         super.onResume();
         mapView.onResume();
+        refreshOverlaysOnMap();
+
+    }
+
+    public void refreshOverlaysOnMap(){
+        mapView.getOverlayManager().clear();
+        mapView.getOverlays().clear();
+
+        ArrayList<ProducerOverlayItem> items = getProducersOverlay();
+        ProducerOverlayItem userLocationOverlay = new ProducerOverlayItem("Vous", "", userLocation);
+        Drawable currentLocationMarker = getResources().getDrawable(R.drawable.baseline_location_on_black_24dp, getContext().getTheme());
+        userLocationOverlay.setMarker(currentLocationMarker);
+
+        items.add(userLocationOverlay);
+
+        ItemizedOverlayWithFocus<ProducerOverlayItem> mOverlay = new ItemizedOverlayWithFocus<>(getContext(), items, new ItemizedIconOverlay.OnItemGestureListener<ProducerOverlayItem>() {
+            @Override
+            public boolean onItemSingleTapUp(int index, ProducerOverlayItem item) {
+                ProducerPageFragment producerPageFragment = new ProducerPageFragment(item.getProducer());
+
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.page_map, producerPageFragment, "findThisFragment")
+                        .addToBackStack(null)
+                        .commit();
+                return true;
+            }
+
+            @Override
+            public boolean onItemLongPress(int index, ProducerOverlayItem item) {
+                return true;
+            }
+        });
+
+        mOverlay.setFocusItemsOnTap(true);
+
+        mapView.getOverlays().add(mOverlay);
     }
 
     @Override
@@ -145,9 +184,9 @@ public class MapFragment extends Fragment {
             this.capturedImage = (Bitmap) data.getExtras().get("data");
 
 
-            ShareProducerFragment nextFrag = new ShareProducerFragment(this.capturedImage);
+            ShareProducerFragment shareProducerForm = new ShareProducerFragment(this.capturedImage, userLocation);
             getActivity().getSupportFragmentManager().beginTransaction()
-                    .replace(((ViewGroup)getView().getParent()).getId(), nextFrag, "findThisFragment")
+                    .replace(R.id.globalActivityView, shareProducerForm, "findThisFragment")
                     .addToBackStack(null)
                     .commit();
         }
