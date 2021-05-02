@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -60,8 +61,9 @@ public class ShareProducerFragment extends Fragment {
     }
 
     public void submitSharingForm(){
+        String name = String.valueOf(((EditText)getView().findViewById(R.id.inputProducerName)).getText());
         Producer.producers.add(
-                new Producer("Mon nouveau producteur", "333 Av ADAzf", currentLocation.getLatitude(),
+                new Producer(name, "", currentLocation.getLatitude(),
                 currentLocation.getLongitude(),false));
         getActivity().onBackPressed();
     }

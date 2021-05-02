@@ -97,11 +97,12 @@ public class ProfilFragment extends Fragment {
 
         tvStats.setText("Stats : In progress ..."); //TODO: stats ne fonctionnent pas à revoir
 
+
         listView.setOnItemClickListener((parent, view, position, id) -> {
 
             OrderDetails orderDetailsFragment = new OrderDetails(orders.get(position));
 
-            getActivity().getSupportFragmentManager().beginTransaction()
+            getChildFragmentManager().beginTransaction()
                     .replace(R.id.page_profil, orderDetailsFragment, "findThisFragment")
                     .addToBackStack(null)
                     .commit();
