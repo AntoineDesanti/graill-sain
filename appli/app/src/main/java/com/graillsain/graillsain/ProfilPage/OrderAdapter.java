@@ -54,7 +54,7 @@ public class OrderAdapter extends BaseAdapter {
 
         String printProducts = "";
         for (int i=0; i<3; i++)
-            printProducts += orders.get(position).getProducts().get(i).getName() + ", "; // pour l'affichage des produits dans la listview
+            printProducts += orders.get(position).getProducts().get(i).getProduct().getName() + ", "; // pour l'affichage des produits dans la listview
         tvOrder.setText("Panier #" + orders.get(position).getId() + "\n" + printProducts);
 
         return layoutItem;
