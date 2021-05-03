@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -27,6 +28,8 @@ import com.graillsain.graillsain.MainActivity;
 
 import com.graillsain.graillsain.MapPage.GPSTracker;
 import com.graillsain.graillsain.Models.Producer;
+import com.graillsain.graillsain.Models.Product;
+import com.graillsain.graillsain.ProfilPage.ProductAdapter;
 import com.graillsain.graillsain.R;
 
 import org.osmdroid.api.IMapController;
@@ -50,10 +53,21 @@ public class ProducerPageFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.producer_page, container, false);
+        View rootView = inflater.inflate(R.layout.page_producer, container, false);
 
         ((TextView) rootView.findViewById(R.id.nom_commerce)).setText(this.producer.getName());
         ((TextView) rootView.findViewById(R.id.adresse_commerce)).setText(this.producer.getAddress());
+
+        ListView listView = rootView.findViewById(R.id.list_view);
+
+        ArrayList<Product> products = new ArrayList<Product>();
+        products.add(new Product("citron", 2));
+        products.add(new Product("fraise", 4));
+        products.add(new Product("orange", 1));
+        products.add(new Product("framboise", 8));
+
+        ProductAdapter productAdapter = new ProductAdapter( getContext(), products);
+        listView.setAdapter(productAdapter);
 
         return rootView;
 
