@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Consummer {
+public class  Consummer {
     private String name;
 
     public Consummer(String name){
