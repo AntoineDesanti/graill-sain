@@ -89,7 +89,7 @@ public class ProfilFragment extends Fragment {
 
         listView.setOnItemClickListener((parent, view, position, id) -> {
 
-            OrderDetails orderDetailsFragment = new OrderDetails(orders.get(position));
+            OrderDetails orderDetailsFragment = new OrderDetails(Storage.orders.get(position));
 
             getChildFragmentManager().beginTransaction()
                     .replace(R.id.page_profil, orderDetailsFragment, "findThisFragment")
