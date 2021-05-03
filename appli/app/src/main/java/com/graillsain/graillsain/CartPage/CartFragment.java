@@ -11,6 +11,8 @@ import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -18,6 +20,7 @@ import com.graillsain.graillsain.Models.Fruit;
 import com.graillsain.graillsain.Models.Order;
 import com.graillsain.graillsain.Models.Product;
 import com.graillsain.graillsain.Models.Storage;
+import com.graillsain.graillsain.NotificationService;
 import com.graillsain.graillsain.ProfilPage.OrderAdapter;
 import com.graillsain.graillsain.R;
 
@@ -30,6 +33,7 @@ import static com.graillsain.graillsain.Models.Consummer.Martin;
 public class CartFragment extends Fragment {
 
     ListView productsListView;
+    private int notificationId = 0;
 
     public CartFragment(){
 
@@ -52,6 +56,11 @@ public class CartFragment extends Fragment {
             fragmentTransaction.replace(R.id.container, new OrderConfirmationFragment());
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
+
+            NotificationService.sendNotificationOnChannel("Paiement confirmé",
+                    "Votre paiement a été accepté. Le vendeur va préparer la commande",
+                    "OrderNotification",NotificationCompat.PRIORITY_MAX, getContext());
+
         });
 
         ListView listView = rootView.findViewById(R.id.list_cart_consumer);
