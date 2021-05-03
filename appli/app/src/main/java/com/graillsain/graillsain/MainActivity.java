@@ -7,6 +7,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.preference.PreferenceManager;
 
 import android.Manifest;
@@ -19,6 +20,7 @@ import android.widget.EditText;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.graillsain.graillsain.CartPage.CartFragment;
+import com.graillsain.graillsain.CartPage.OrderConfirmationFragment;
 import com.graillsain.graillsain.MapPage.MapFragment;
 import com.graillsain.graillsain.Models.Producer;
 import com.graillsain.graillsain.NewsPage.NewsFragment;
@@ -62,7 +64,11 @@ public class MainActivity extends AppCompatActivity {
 
 
         BottomNavigationView bottomNav = findViewById(R.id.navigationView);
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, mapPageFragment).commit();
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, mapPageFragment)
+                .commit();
+
 
         bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

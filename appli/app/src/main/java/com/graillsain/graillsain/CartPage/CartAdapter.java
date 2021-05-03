@@ -49,6 +49,7 @@ public class CartAdapter extends BaseAdapter {
             tvCartElement.setText((int)products.get(position).getQuantity()
                     + "x "
                     + products.get(position).getProduct().getName()
+                    + " (" + products.get(position).getWeight() + "g )"
                     + "\t\t"
                     + products.get(position).getWeight()*products.get(position).getProduct().getPricePerKilo()
                     + "€"
