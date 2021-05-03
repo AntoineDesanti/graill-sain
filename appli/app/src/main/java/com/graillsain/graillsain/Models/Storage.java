@@ -37,5 +37,12 @@ public class Storage {
             new Order((int) ((Math.random() * (9999-1000)) + 1000), Storage.cartElements, date, Martin)
     ));
 
+    public static Order findOrderById(int id){
+        for(Order o : orders){
+            if(o.getId() == id) return o;
+        }
+        return null;
+    }
+
 
 }

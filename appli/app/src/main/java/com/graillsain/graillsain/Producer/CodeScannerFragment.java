@@ -15,6 +15,8 @@ import com.budiyev.android.codescanner.CodeScanner;
 import com.budiyev.android.codescanner.CodeScannerView;
 import com.budiyev.android.codescanner.DecodeCallback;
 import com.google.zxing.Result;
+import com.graillsain.graillsain.Models.Storage;
+import com.graillsain.graillsain.OrderDetailsPage.OrderDetails;
 import com.graillsain.graillsain.R;
 
 public class CodeScannerFragment extends Fragment {
@@ -43,6 +45,14 @@ public class CodeScannerFragment extends Fragment {
                     public void run() {
                         Toast.makeText(activity, result.getText(), Toast.LENGTH_SHORT).show();
                         //Replace line above with replace() to OrderFragment that has the result.getText() id
+                        OrderDetails orderDetailsFragment = new OrderDetails(
+                                Storage.findOrderById(Integer.valueOf(result.getText()))
+                        );
+
+                        getChildFragmentManager().beginTransaction()
+                                .replace(R.id.codeScannerId, orderDetailsFragment, "findThisFragment")
+                                .addToBackStack(null)
+                                .commit();
                     }
                 });
             }

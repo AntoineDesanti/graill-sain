@@ -50,7 +50,7 @@ public class OrderConfirmationFragment extends Fragment {
         });
 
 
-        Bitmap qrcode = QRCode.from(UUID.randomUUID().toString()).bitmap();
+        Bitmap qrcode = QRCode.from(String.valueOf(Storage.orders.get(0).getId())).bitmap();
         ImageView qrCodeImage = (ImageView) rootView.findViewById(R.id.QRCodeView);
         qrCodeImage.setImageBitmap(qrcode);
 
