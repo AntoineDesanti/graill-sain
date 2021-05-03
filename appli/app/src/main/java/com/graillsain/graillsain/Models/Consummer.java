@@ -6,12 +6,18 @@ import java.util.List;
 
 public class Consummer {
     private String name;
+    private ArrayList<CartElement> cartElements;
 
     public Consummer(String name){
         this.name = name;
+        this.cartElements = Storage.cartElements;
     }
 
     public static Consummer Martin = new Consummer("Martin");
+
+    public ArrayList<CartElement> getCartElements() {
+        return cartElements;
+    }
 
     public String getName() {
         return name;
