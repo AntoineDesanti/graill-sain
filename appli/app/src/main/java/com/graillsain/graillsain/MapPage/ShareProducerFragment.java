@@ -2,8 +2,6 @@ package com.graillsain.graillsain.MapPage;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +35,7 @@ public class ShareProducerFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.share_producer, container, false);
 
-        Button backButton = rootView.findViewById(R.id.back_button);
+        Button backButton = rootView.findViewById(R.id.back_button_orderdetails);
         backButton.setOnClickListener( click -> {
             getActivity().onBackPressed();
         });
