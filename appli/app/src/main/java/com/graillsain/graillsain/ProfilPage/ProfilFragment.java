@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -91,8 +92,9 @@ public class ProfilFragment extends Fragment {
 
             OrderDetails orderDetailsFragment = new OrderDetails(Storage.orders.get(position));
 
-            getChildFragmentManager().beginTransaction()
-                    .replace(R.id.page_profil, orderDetailsFragment, "findThisFragment")
+
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    .add(R.id.page_profil, orderDetailsFragment, "findThisFragment")
                     .addToBackStack(null)
                     .commit();
         });

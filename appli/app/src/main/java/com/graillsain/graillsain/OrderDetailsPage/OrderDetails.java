@@ -5,6 +5,7 @@ package com.graillsain.graillsain.OrderDetailsPage;
         import android.view.View;
         import android.view.ViewGroup;
 
+        import android.widget.Button;
         import android.widget.SeekBar;
         import android.widget.TextView;
 
@@ -29,8 +30,11 @@ public class OrderDetails extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.page_order_details, container, false);
 
-        ((TextView) rootView.findViewById(R.id.text_panier_id)).setText(""+this.order.getId());
+        ((TextView) rootView.findViewById(R.id.text_panier_id)).setText("Panier #"+this.order.getId());
         ((SeekBar) rootView.findViewById(R.id.seekBar)).setProgress(1);
+        ((Button) rootView.findViewById(R.id.back_button_orderdetails)).setOnClickListener(click -> {
+            getActivity().onBackPressed();
+        });
 
         return rootView;
 

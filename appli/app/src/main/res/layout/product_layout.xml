@@ -16,7 +16,7 @@
         android:id="@+id/nom_produit"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:paddingRight="250dp"
+        android:paddingRight="225dp"
         tools:ignore="MissingConstraints" />
 
     <TextView

@@ -4,14 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/page_order_details"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+
+    <Button
+        android:id="@+id/back_button_orderdetails"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="2dp"
+        android:backgroundTint="@android:color/black"
+        android:isScrollContainer="false"
+        android:pointerIcon="arrow"
+        android:textSize="0dp"
+        app:icon="@drawable/abc_vector_test"
+        app:iconPadding="0dp"
+        app:iconSize="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rippleColor="#000000" />
 
     <TextView
         android:id="@+id/text_panier_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="26dp"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="50dp"
         android:text="Panier #1"
         android:textSize="30sp"
         android:textStyle="bold"
