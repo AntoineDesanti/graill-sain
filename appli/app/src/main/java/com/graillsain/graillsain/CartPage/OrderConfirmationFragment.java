@@ -20,6 +20,8 @@ import com.graillsain.graillsain.R;
 
 import net.glxn.qrgen.android.QRCode;
 
+import java.util.UUID;
+
 public class OrderConfirmationFragment extends Fragment {
 
     public OrderConfirmationFragment(){
@@ -36,7 +38,7 @@ public class OrderConfirmationFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.page_order_confirmation, container, false);
 
-        Bitmap qrcode = QRCode.from("Hello World").bitmap();
+        Bitmap qrcode = QRCode.from(UUID.randomUUID().toString()).bitmap();
         ImageView qrCodeImage = (ImageView) rootView.findViewById(R.id.QRCodeView);
         qrCodeImage.setImageBitmap(qrcode);
 
