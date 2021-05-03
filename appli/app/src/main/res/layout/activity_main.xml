@@ -4,14 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8E543"
-    tools:context=".MainActivity">
-
-    <FrameLayout
-        android:id="@+id/container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+    tools:context=".MainActivity"
+    android:id="@+id/globalActivityView">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigationView"
@@ -27,43 +21,20 @@
         app:itemIconTint="@color/black"
         app:itemTextColor="@color/black"
         app:menu="@layout/menu"
+        app:labelVisibilityMode="labeled"
+        >
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/navigationView"
         />
-
-
-    <Button
-        android:id="@+id/buttonNotify"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Notify me baby"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_message"
-        app:layout_constraintVertical_bias="0.136" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/edit_text_title"
-        android:layout_width="367dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="96dp"
-        android:backgroundTint="#FFFFFF"
-        android:hint="title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.636"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/edit_text_message"
-        android:layout_width="369dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="40dp"
-        android:backgroundTint="#FFFFFF"
-        android:hint="message"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.619"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
