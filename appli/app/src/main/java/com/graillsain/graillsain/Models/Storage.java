@@ -2,7 +2,10 @@ package com.graillsain.graillsain.Models;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
+
+import static com.graillsain.graillsain.Models.Consummer.Martin;
 
 public class Storage {
     public static ArrayList<Product> products = new ArrayList<Product>(Arrays.asList(
@@ -26,5 +29,13 @@ public class Storage {
             "Jeudi 06/05 : 14h-15h",
             "Vendredi 07/05 : 9h-10h"
     ));
+
+    public static Date date = new Date();
+    public static ArrayList<Order> orders = new ArrayList<Order>(Arrays.asList(
+            new Order((int) ((Math.random() * (9999-1000)) + 1000), Storage.cartElements, date, Martin),
+            new Order((int) ((Math.random() * (9999-1000)) + 1000), Storage.cartElements, date, Martin),
+            new Order((int) ((Math.random() * (9999-1000)) + 1000), Storage.cartElements, date, Martin)
+    ));
+
 
 }

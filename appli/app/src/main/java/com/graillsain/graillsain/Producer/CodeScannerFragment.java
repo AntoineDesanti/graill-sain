@@ -42,6 +42,7 @@ public class CodeScannerFragment extends Fragment {
                     @Override
                     public void run() {
                         Toast.makeText(activity, result.getText(), Toast.LENGTH_SHORT).show();
+                        //Replace line above with replace() to OrderFragment that has the result.getText() id
                     }
                 });
             }
