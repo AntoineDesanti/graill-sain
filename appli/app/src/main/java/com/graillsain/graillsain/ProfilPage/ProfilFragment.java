@@ -1,9 +1,11 @@
 package com.graillsain.graillsain.ProfilPage;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -18,6 +20,7 @@ import com.graillsain.graillsain.Models.Order;
 import com.graillsain.graillsain.Models.Product;
 import com.graillsain.graillsain.Models.Storage;
 import com.graillsain.graillsain.Models.Vegetable;
+import com.graillsain.graillsain.OrderDetailsPage.OrderDetails;
 import com.graillsain.graillsain.R;
 
 import java.time.Instant;
@@ -90,6 +93,16 @@ public class ProfilFragment extends Fragment {
 
         tvStats.setText("Stats : In progress ..."); //TODO: stats ne fonctionnent pas à revoir
 
+
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+
+            OrderDetails orderDetailsFragment = new OrderDetails(orders.get(position));
+
+            getChildFragmentManager().beginTransaction()
+                    .replace(R.id.page_profil, orderDetailsFragment, "findThisFragment")
+                    .addToBackStack(null)
+                    .commit();
+        });
         return rootView;
     }
 }

@@ -141,7 +141,6 @@ public class MapFragment extends Fragment {
         super.onResume();
         mapView.onResume();
         refreshOverlaysOnMap();
-
     }
 
     public void refreshOverlaysOnMap(){

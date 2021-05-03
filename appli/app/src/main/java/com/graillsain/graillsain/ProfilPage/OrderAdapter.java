@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.graillsain.graillsain.Models.Order;
+import com.graillsain.graillsain.OrderDetailsPage.OrderDetails;
+import com.graillsain.graillsain.Producer.ProducerPageFragment;
 import com.graillsain.graillsain.R;
 
 import java.util.ArrayList;
