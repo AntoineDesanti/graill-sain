@@ -56,7 +56,7 @@ public class ProducerPageFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.page_producer, container, false);
 
         ((TextView) rootView.findViewById(R.id.nom_commerce)).setText(this.producer.getName());
-        ((TextView) rootView.findViewById(R.id.adresse_commerce)).setText(this.producer.getAddress());
+        ((TextView) rootView.findViewById(R.id.adresse_commerce)).setText(" 📍 "+this.producer.getAddress());
 
         ListView listView = rootView.findViewById(R.id.list_view);
 
