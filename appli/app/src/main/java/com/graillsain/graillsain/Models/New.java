@@ -6,6 +6,7 @@ public class New {
     private String description;
 
     public New(int imageId, String title, String description) {
+        this.imageId = imageId;
         this.title = title;
         this.description = description;
     }
