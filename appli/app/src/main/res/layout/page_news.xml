@@ -7,13 +7,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/text_map"
+
+    <ListView
+        android:id="@+id/list_cards"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FA8A5A"
-        android:text="news_page"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteX="98dp"
+        tools:layout_editor_absoluteY="127dp"
+        android:divider="@android:color/transparent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
