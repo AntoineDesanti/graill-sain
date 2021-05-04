@@ -26,6 +26,7 @@ import java.util.Date;
 import java.util.List;
 
 import static com.graillsain.graillsain.Models.Consummer.Martin;
+import static com.graillsain.graillsain.Models.Storage.date;
 
 public class CartFragment extends Fragment {
 
@@ -48,6 +49,7 @@ public class CartFragment extends Fragment {
 
         Button confirmationButton = (Button)rootView.findViewById(R.id.confirmationButton);
         confirmationButton.setOnClickListener((v) -> {
+            Storage.orders.add(new Order((int) ((Math.random() * (9999-1000)) + 1000), Storage.cartElements, date, Martin));
             FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.container, new OrderConfirmationFragment());
             fragmentTransaction.addToBackStack(null);
