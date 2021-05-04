@@ -1,9 +1,10 @@
-package com.graillsain.graillsain.NewsPage;
+package com.graillsain.graillsain.Producer;
 
 import android.content.Context;
 import android.widget.ArrayAdapter;
 
 import com.graillsain.graillsain.Models.New;
+import com.graillsain.graillsain.Models.Product;
 import com.graillsain.graillsain.R;
 
 import android.content.Context;
@@ -17,8 +18,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 
-public class NewsAdapter extends ArrayAdapter<New> {
-    public NewsAdapter(Context context) {
+public class ProducerPageAdapter extends ArrayAdapter<Product> {
+    public ProducerPageAdapter(Context context) {
         super(context, R.layout.card_item);
     }
 
@@ -35,14 +36,14 @@ public class NewsAdapter extends ArrayAdapter<New> {
 
             convertView.setTag(holder);
         } else {
-            holder = (ViewHolder) convertView.getTag();
+            holder = (ViewHolder)convertView.getTag();
         }
 
-        New model = getItem(position);
+        Product model = getItem(position);
 
-        holder.imageView.setImageResource(model.getImageId());
-        holder.tvTitle.setText(model.getTitle());
-        holder.tvSubtitle.setText(model.getDescription());
+        holder.imageView.setImageResource(model.getImage());
+        holder.tvTitle.setText(model.getName());
+        holder.tvSubtitle.setText(String.valueOf(model.getPricePerKilo()));
 
         return convertView;
     }

@@ -141,7 +141,7 @@
         tools:layout_editor_absoluteX="-16dp" />
 
     <ListView
-        android:id="@+id/list_view"
+        android:id="@+id/list_view_producer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"

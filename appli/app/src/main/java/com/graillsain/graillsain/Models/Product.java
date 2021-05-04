@@ -35,4 +35,8 @@ public class Product {
     public void setPricePerKilo(double pricePerKilo) {
         this.pricePerKilo = pricePerKilo;
     }
+
+    public int getImage() {
+        return image;
+    }
 }
