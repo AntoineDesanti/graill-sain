@@ -1,6 +1,7 @@
 package com.graillsain.graillsain;
 
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.IBinder;
@@ -14,11 +15,25 @@ import java.util.TimerTask;
 
 public class NotificationService extends Service {
 
+
     Timer timer;
     TimerTask timerTask;
     String TAG = "Timers";
     int Your_X_SECS = 5;
 
+    private static int notificationId = 0;
+
+
+    public static void sendNotificationOnChannel(String title, String content, String channelID, int priority, Context context)
+    {
+        NotificationCompat.Builder notification = new NotificationCompat.Builder(context,
+                channelID)
+                .setSmallIcon(R.drawable.ic_launcher_background)
+                .setContentTitle(title)
+                .setContentText(content)
+                .setPriority(priority);
+        NotificationManagerCompat.from(context).notify(++notificationId, notification.build());
+    }
 
     @Override
     public IBinder onBind(Intent arg0) {

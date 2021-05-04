@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void sendNotificationOnChannel(String title, String content, String channelID, int priority)
+    public void sendNotificationOnChannel(String title, String content, String channelID, int priority)
     {
         NotificationCompat.Builder notification = new NotificationCompat.Builder(this,
                 channelID)
