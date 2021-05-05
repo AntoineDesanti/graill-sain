@@ -78,4 +78,13 @@ public class Order {
     public void setConsummer(Consummer consummer) {
         this.consummer = consummer;
     }
+
+    @Override
+    public String toString()
+    {
+        String str = "  ";
+        for (CartElement product : products)
+            str = str.concat(product.getProduct().getName() + ", ");
+        return str.substring(0, str.length()-2);
+    }
 }

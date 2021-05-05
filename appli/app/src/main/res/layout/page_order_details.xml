@@ -148,4 +148,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_panier_label1" />
 
+    <EditText
+        android:id="@+id/text_order_details"
+        android:layout_width="364dp"
+        android:layout_height="251dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="25dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/list_view_producer" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
