@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/orderConfirmationContainer"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
 
     <TextView
         android:id="@+id/textView7"
@@ -51,15 +52,11 @@
 
     <Button
         android:id="@+id/scanCodeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="131dp"
-        android:layout_marginTop="566dp"
-        android:layout_marginEnd="131dp"
-        android:layout_marginBottom="117dp"
-        android:text="SCAN A CODE..."
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="4dp"
+        android:layout_height="4dp"
+        android:background="#FDFDFD"
+        android:backgroundTint="#FFFFFF"
+        tools:layout_editor_absoluteX="192dp"
+        tools:layout_editor_absoluteY="353dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
