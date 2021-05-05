@@ -9,10 +9,10 @@ import static com.graillsain.graillsain.Models.Consummer.Martin;
 
 public class Storage {
     public static ArrayList<Product> products = new ArrayList<Product>(Arrays.asList(
-            new Fruit("Citron", 2),
-            new Fruit("Fraise", 4),
-            new Fruit("Orange", 1),
-            new Fruit("Framboise", 8)
+            new Fruit("Citron", 2.00),
+            new Fruit("Fraise", 4.00),
+            new Fruit("Orange", 1.00),
+            new Fruit("Framboise", 8.00)
     ));
 
     public static ArrayList<CartElement> cartElements = new ArrayList<CartElement>(Arrays.asList(
