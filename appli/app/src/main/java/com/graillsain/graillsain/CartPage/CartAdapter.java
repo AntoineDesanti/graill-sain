@@ -51,7 +51,7 @@ public class CartAdapter extends BaseAdapter {
                     + products.get(position).getProduct().getName()
                     + " (" + products.get(position).getWeight() + "g )"
                     + "\t\t"
-                    + products.get(position).getWeight()*products.get(position).getProduct().getPricePerKilo()
+                    + String.format("%1$,.2f", products.get(position).getWeight()*products.get(position).getProduct().getPricePerKilo())
                     + "€"
             );
 

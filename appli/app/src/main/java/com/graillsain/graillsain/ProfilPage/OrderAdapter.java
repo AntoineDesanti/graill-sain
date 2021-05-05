@@ -52,7 +52,8 @@ public class OrderAdapter extends BaseAdapter {
 
         tvSchedule.setText("Heure de passage : " + orders.get(position).getSchedule().getHours()
                 + ":" + orders.get(position).getSchedule().getMinutes()
-                + "\n Total : " + orders.get(position).getTotal() + "0€"); //pour le moment réglé sur l'heure actuelle
+                + "\n Total : "
+                + String.format("%1$,.2f", orders.get(position).getTotal()) + "€"); //pour le moment réglé sur l'heure actuelle
 
         String printProducts = "";
         for (int i=0; i<3; i++)
