@@ -43,7 +43,7 @@ public class ProducerPageAdapter extends ArrayAdapter<Product> {
 
         holder.imageView.setImageResource(model.getImage());
         holder.tvTitle.setText(model.getName());
-        holder.tvSubtitle.setText(String.valueOf(model.getPricePerKilo()));
+        holder.tvSubtitle.setText(String.valueOf(model.getPricePerKilo()) + "€");
 
         return convertView;
     }
