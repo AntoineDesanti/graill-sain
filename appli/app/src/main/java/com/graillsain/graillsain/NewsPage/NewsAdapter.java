@@ -19,7 +19,7 @@ import androidx.annotation.NonNull;
 
 public class NewsAdapter extends ArrayAdapter<New> {
     public NewsAdapter(Context context) {
-        super(context, R.layout.card_item);
+        super(context, R.layout.card_item_news);
     }
 
     @NonNull
@@ -30,7 +30,7 @@ public class NewsAdapter extends ArrayAdapter<New> {
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-            convertView = inflater.inflate(R.layout.card_item, parent, false);
+            convertView = inflater.inflate(R.layout.card_item_news, parent, false);
             holder = new ViewHolder(convertView);
 
             convertView.setTag(holder);
