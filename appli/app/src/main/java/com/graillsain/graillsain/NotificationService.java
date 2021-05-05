@@ -28,10 +28,12 @@ public class NotificationService extends Service {
     {
         NotificationCompat.Builder notification = new NotificationCompat.Builder(context,
                 channelID)
-                .setSmallIcon(R.drawable.ic_launcher_background)
+                .setSmallIcon(R.drawable.icon_app)
                 .setContentTitle(title)
                 .setContentText(content)
-                .setPriority(priority);
+                .setPriority(priority)
+                .setStyle(new NotificationCompat.BigTextStyle()
+                        .bigText(content));
         NotificationManagerCompat.from(context).notify(++notificationId, notification.build());
     }
 
