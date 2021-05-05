@@ -1,6 +1,7 @@
 package com.graillsain.graillsain.CartPage;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,9 +60,21 @@ public class CartFragment extends Fragment {
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
 
-            NotificationService.sendNotificationOnChannel("Paiement confirmé",
-                    "Votre paiement a été accepté. Le vendeur va préparer la commande",
-                    "OrderNotification",NotificationCompat.PRIORITY_MAX, getContext());
+            // SLEEP 5 SECONDS HERE ...
+            Handler handler = new Handler();
+            handler.postDelayed(() ->
+                    NotificationService.sendNotificationOnChannel("Paiement confirmé",
+                    "Votre paiement a été accepté. Le vendeur va préparer la commande.",
+                    "OrderNotification",NotificationCompat.PRIORITY_MAX, getContext()),
+                    4000);
+
+            // SIMULATION de validation de la commande
+            // TODO : Affichage après validation côté producteur
+            handler.postDelayed(() ->
+                    NotificationService.sendNotificationOnChannel("Commande acceptée",
+                    "Le producteur va préparer votre commande.",
+                    "OrderNotification",NotificationCompat.PRIORITY_MAX, getContext()),
+                    15000);
 
         });
 
